@@ -3,6 +3,7 @@
 A full-stack URL shortening platform with rich click analytics, QR code generation, bulk import, and shareable public stats — built with Node.js, Express, Prisma (PostgreSQL), React, and Tailwind CSS.
 
 Deployes website : https://urlshortenerapp-six.vercel.app/
+
 Demo Video : https://www.loom.com/share/e87bdde8e28e4019bfdc304ef77a655f
 ---
 
