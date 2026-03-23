@@ -4,7 +4,7 @@ A full-stack URL shortening platform with rich click analytics, QR code generati
 
 Deployes website : https://urlshortenerapp-six.vercel.app/
 
-Demo Video : https://www.loom.com/share/e87bdde8e28e4019bfdc304ef77a655f
+Demo Video : https://www.loom.com/share/df982204dc3645b29e9c9b5043b91b86
 ---
 
 ## Table of Contents
