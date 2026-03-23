@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: url-shortener-backend
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install && npx prisma generate
+    startCommand: npm start
+    envVars:
+      - key: DATABASE_URL
+        sync: false          # Set this manually in Render dashboard
+      - key: JWT_SECRET
+        sync: false          # Set this manually in Render dashboard
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      - key: PORT
+        value: 5000
+      - key: BASE_URL
+        sync: false          # Set to your Render service URL e.g. https://url-shortener-backend.onrender.com
+      - key: FRONTEND_URL
+        sync: false          # Set to your Vercel frontend URL e.g. https://your-app.vercel.app
+      - key: NODE_ENV
+        value: production

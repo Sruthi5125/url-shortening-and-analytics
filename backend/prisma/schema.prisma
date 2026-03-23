@@ -1,0 +1,60 @@
+// Prisma Schema for URL Shortener with Analytics
+// Run: npx prisma migrate dev --name init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           Int      @id @default(autoincrement())
+  name         String
+  email        String   @unique
+  passwordHash String   @map("password_hash")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  urls Url[]
+
+  @@map("users")
+}
+
+
+model Url {
+  id          Int       @id @default(autoincrement())
+  userId      Int       @map("user_id")
+  originalUrl String    @map("original_url")
+  shortCode   String    @unique @map("short_code")
+  customAlias String?   @unique @map("custom_alias")
+  clickCount  Int       @default(0) @map("click_count")
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+  expiresAt   DateTime? @map("expires_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  visits Visit[]
+
+  @@map("urls")
+}
+
+
+model Visit {
+  id        Int      @id @default(autoincrement())
+  urlId     Int      @map("url_id")
+  visitedAt DateTime @default(now()) @map("visited_at")
+  ipAddress String?  @map("ip_address")
+  userAgent String?  @map("user_agent")
+  referer   String?
+  browser   String?
+  os        String?
+  deviceType String? @map("device_type")
+
+  // FK: this visit belongs to one shortened URL
+  url Url @relation(fields: [urlId], references: [id], onDelete: Cascade)
+
+  @@map("visits")
+}
