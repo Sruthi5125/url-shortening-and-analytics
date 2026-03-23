@@ -99,7 +99,7 @@ export const SignupPage = () => {
 
             <div className="space-y-1.5">
               <label htmlFor="name" className="block text-xs font-bold text-slate-400 uppercase tracking-wider">Full name</label>
-              <Input id="name" type="text" autoComplete="name" required value={name} onChange={(e) => setName(e.target.value)} placeholder="John Doe" />
+              <Input id="name" type="text" autoComplete="name" required value={name} onChange={(e) => setName(e.target.value)} placeholder="Your full name" />
             </div>
 
             <div className="space-y-1.5">
